@@ -1,4 +1,4 @@
-package com.netapp.learn;
+package com.bytemeagain.hadoop;
 
 import java.io.IOException;
 
@@ -57,7 +57,7 @@ public class WordCount extends Configured implements Tool {
 	}
 
 
-	@Override
+	
 	public int run(String[] args) throws Exception {
 		Configuration conf = new Configuration();
 		String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
