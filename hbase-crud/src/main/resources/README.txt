@@ -8,32 +8,32 @@ help "<cmd>" //Ex. help "create"
 
 #List tables in HBase
 list
-list 'fb_.*'
+list 'FB_.*'
 
 #Create a table 
-create 'fb_profile','column_family1','column_family2','column_family3'
-create 'fb_profile','basic','work','edu'
+create 'FB_PROFILE','COLUMN_FAMILY1','COLUMN_FAMILY2','COLUMN_FAMILY3'
+create 'FB_PROFILE','BASIC','WORK','EDU'
 
 #Update a table
-put 'fb_profile','row_key','basic:sample_column','shell'
-put 'fb_profile','row_key','basic:sample_column','updated'
-put 'fb_profile','row_key','basic:sample_column1','something'
-put 'fb_profile','row_key','basic:sample_column2','somethingelse'
+put 'FB_PROFILE','row_key','BASIC:SAMPLE_COLUMN','shell'
+put 'FB_PROFILE','row_key','BASIC:SAMPLE_COLUMN','updated'
+put 'FB_PROFILE','row_key','BASIC:SAMPLE_COLUMN1','something'
+put 'FB_PROFILE','row_key','BASIC:SAMPLE_COLUMN2','somethingelse'
 
 #Drop a table
 #One must always disable the table before it has to be deleted
-is_enabled 'fb_profile'
-disable 'fb_profile'
-drop 'fb_profile'
+is_enabled 'FB_PROFILE'
+disable 'FB_PROFILE'
+drop 'FB_PROFILE'
 
 #Read from a table 
-scan 'fb_profile'
-get 'fb_profile','row_key','basic'
-get 'fb_profile','row_key','basic:sample_column1'
-get 'fb_profile','row_key',{COLUMN=>'basic:sample_column',VERSIONS=>3}
+scan 'FB_PROFILE'
+get 'FB_PROFILE','row_key','BASIC'
+get 'FB_PROFILE','row_key','BASIC:SAMPLE_COLUMN1'
+get 'FB_PROFILE','row_key',{COLUMN=>'BASIC:SAMPLE_COLUMN',VERSIONS=>3}
 
 #Delete a row or specific column
-deleteall 'fb_profile','row_key'
-delete 'fb_profile','row_key','basic:sample_column'
+deleteall 'FB_PROFILE','row_key'
+delete 'FB_PROFILE','row_key','BASIC:SAMPLE_COLUMN'
 
 
