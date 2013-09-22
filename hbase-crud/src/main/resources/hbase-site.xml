@@ -1,10 +1,10 @@
 <configuration>
 	<property>
 		<name>hbase.zookeeper.quorum</name>
-		<value>rtpwil-bigdata-qa05.rtp.netapp.com,rtpwil-bigdata-qa01.rtp.netapp.com,rtpwil-bigdata-qa03.rtp.netapp.com</value> 
+		<value><!-- hbase zookeeper quora --></value> 
 	</property>
 	<property>
 		<name>hbase.zookeeper.property.clientPort</name>
-		<value>2181</value>
-	</property>
+		<value><!-- hbase client port number --></value>
+	</property>	
 </configuration>
