@@ -99,6 +99,21 @@ public class HBaseTest {
 
 	}
 
+	@Test
+	public void copyFromOneTableToAnother() throws Exception{
+		
+		String sourceTable = "ASUP_CURRENT_WEEKLY";
+		String sourceRowKey = "C|731660A9-D2CD-11DE-B05D-123478563412|700000466913";
+		String targetTable = "ASUP_CURRENT_WEEKLY123";
+
+		//Read from source table
+		Result sourceHBaseResult = HBaseCrud.INSTANCE.get(sourceTable, sourceRowKey, null, null);
+		
+		//Write to the target table
+		if(HBaseCrud.INSTANCE.writeToAnotherTable(targetTable,  sourceHBaseResult)){
+			System.out.println("Data successfully stored!!");
+		}
+	}
 
 	//Test using timestamp scan
 	//Test using other scan filters

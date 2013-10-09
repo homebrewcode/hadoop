@@ -1,0 +1,33 @@
+{
+"name": "eventObjects",
+"type": "map",
+"values":
+	{
+	"name": "instances",
+	"type": "map",
+	"values": 
+		{
+		"name": "eventTypes",
+		"type": "map",
+		"values":
+			{
+			"name": "crcs",
+			"type": "map",
+			"values": 
+				{
+				"name": "eventData",
+				"type": "record",
+				"fields":
+					[
+						{"name": "first_occurrence", "type": "long"},
+						{"name": "last_occurrence", "type": "long"},
+						{"name": "count", "type": "int"},
+						{"name": "severity", "type": "int"},
+						{"name": "message", "type": ["null","string"]},
+						{"name": "tags", "type": {"type": "map", "values": "string"}}
+					]
+				}
+			}
+		}
+	}
+}
