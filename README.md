@@ -1,4 +1,4 @@
 hadoop
 ======
 
-Repo to containing projects to demonstrate the usage of Hadoop Java API's
+Repo containing projects to demonstrate the usage of Hadoop Java API's
