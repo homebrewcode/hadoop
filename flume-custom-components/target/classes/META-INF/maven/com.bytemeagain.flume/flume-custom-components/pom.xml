@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.bytemeagain.flume</groupId>
+	<artifactId>flume-custom-components</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<description>Classes to demonstrate building custom flume components</description>
+
+	<repositories>
+		<repository>
+			<id>cloudera-repo</id>
+			<url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
+		</repository>
+	</repositories>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.flume</groupId>
+			<artifactId>flume-ng-core</artifactId>
+			<version>1.2.0-cdh4.1.1</version>
+		</dependency>
+	</dependencies>
+
+
+
+</project>
