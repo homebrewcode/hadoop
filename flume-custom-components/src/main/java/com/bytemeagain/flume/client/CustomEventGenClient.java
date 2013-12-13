@@ -15,15 +15,12 @@ import com.bytemeagain.flume.util.ConsoleWriter;
 public class CustomEventGenClient {
 
 	RpcClient rpcClient;
-	String hostName = NetConstants.hostName;
-	Integer portNumber = NetConstants.portNumber;
+	String hostName;
+	Integer portNumber;
 
-	public CustomEventGenClient(){
-		init();
-	}
-
-	public void init(){
-		//Creating an RPC client connection
+	public CustomEventGenClient(String hostName, Integer portNumber){
+		this.hostName = hostName;
+		this.portNumber = portNumber;
 		rpcClient = RpcClientFactory.getDefaultInstance(hostName, portNumber);
 	}
 
@@ -66,7 +63,7 @@ public class CustomEventGenClient {
 	}
 
 	public static void main(String[] args) throws EventDeliveryException {
-		CustomEventGenClient eventGenClient = new CustomEventGenClient();
+		CustomEventGenClient eventGenClient = new CustomEventGenClient(NetConstants.hostName,NetConstants.portNumber);
 		Event newEvent = eventGenClient.createEvent();
 		ConsoleWriter.printEvent(newEvent);
 		eventGenClient.postEvent(newEvent);
