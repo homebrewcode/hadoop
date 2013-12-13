@@ -13,7 +13,6 @@
 		</repository>
 	</repositories>
 
-
 	<dependencies>
 		<dependency>
 			<groupId>org.apache.flume</groupId>
@@ -22,6 +21,43 @@
 		</dependency>
 	</dependencies>
 
+	<properties>
+		<skip.assembly.plugin>true</skip.assembly.plugin>		
+	</properties>
+
+	<build>
+		<plugins>
+			<!-- Plugin for jar creation -->
+			<plugin>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>jar-with-dependencies</id>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+						<configuration>
+							<descriptorRefs>
+								<descriptorRef>jar-with-dependencies</descriptorRef>
+							</descriptorRefs>
+							<skipAssembly>${skip.assembly.plugin}</skipAssembly>
+							<archive>
+								<manifest>
+									<mainClass>com.bytemeagain.flume.client.CustomEventGenClient</mainClass>
+									<packageName>com.bytemeagain.flume.client</packageName>
+								</manifest>
+								<manifestEntries>
+									<mode>development</mode>
+									<url>${pom.url}</url>
+								</manifestEntries>
+							</archive>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
 
 
 </project>

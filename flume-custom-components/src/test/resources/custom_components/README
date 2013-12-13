@@ -1,0 +1,49 @@
+#Prerequisite
+Following must be installed to run the example
+1. java
+2. maven
+3. flume-ng
+	
+#To test custom_components
+1. Compile the project with the following maven command
+	mvn clean package -DskipTests -Dskip.assembly.plugin=false
+
+2. You should be able to generate the following 2 jar files
+ 	flume-custom-components-0.0.1-SNAPSHOT.jar
+ 	flume-custom-components-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+
+3. Using the files create a directory structure like below and 
+flume_custom
+|
+|-flume
+| |-flume.conf
+| |-start-agent.sh
+| |-flume-custom-components-0.0.1-SNAPSHOT.jar
+|
+`-client
+  |-run-custom-client.sh
+  |-flume-custom-components-0.0.1-SNAPSHOT-jar-with-dependencies.jar
+  `-subsubdir
+
+4. Run the following scripts in the sequence mentioned below
+	start-agent.sh
+	run-custom-client.sh
+
+5. Flume event flow
+	client -> source -> channel -> sink
+
+
+
+
+
+
+
+
+
+
+
+
+
+#Never mind of the text below-- It is only for my reference
+#Use load time weaving with Java Springs
+http://www.jayway.com/2009/12/15/load-time-weaving-spring-and-maven/
