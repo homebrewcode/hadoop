@@ -17,16 +17,20 @@ import org.apache.flume.source.avro.AvroFlumeEvent;
 import org.apache.flume.source.avro.AvroSourceProtocol;
 import org.apache.flume.source.avro.Status;
 
-import com.bytemeagain.flume.common.NetConstants;
 import com.bytemeagain.flume.util.AvroEventHelper;
 
 public class CustomSource extends AbstractSource implements Configurable, EventDrivenSource, AvroSourceProtocol{
 
 	Server server;
-
+	String bind;
+	Integer port;
+	
+	private static String BIND = "bind";
+	private static String PORT = "port";
+	
 	public void configure(Context context) {
-		//Nothing to configure :(
-
+		bind = context.getString(BIND);
+		port = context.getInteger(PORT);
 	}
 
 	@Override
@@ -34,7 +38,7 @@ public class CustomSource extends AbstractSource implements Configurable, EventD
 		//This method is called by flume lifecycle manager
 		//Creating and starting a server
 		Responder responder = new SpecificResponder(AvroSourceProtocol.class, this);
-		server = new NettyServer(responder, new InetSocketAddress(NetConstants.hostName, NetConstants.portNumber));
+		server = new NettyServer(responder, new InetSocketAddress(bind, port));
 		server.start();
 		
 		super.start();

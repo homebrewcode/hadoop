@@ -9,27 +9,28 @@ import org.apache.flume.Event;
 import org.apache.flume.EventDeliveryException;
 import org.apache.flume.source.avro.AvroSourceProtocol;
 
-import com.bytemeagain.flume.client.CustomEventGenClient;
+import com.bytemeagain.flume.client.RandomEventGenClient;
 import com.bytemeagain.flume.common.NetConstants;
 import com.bytemeagain.flume.util.ConsoleWriter;
 
 
-public class CustomEventGenClientTester {
+public class TestRandomEventGenClient {
 	public static void main(String[] args) throws EventDeliveryException {
 		
 		NettyServer server=null;
 		try {
 			System.out.println("Opening server connection");
 			//Starting the server!!
-			Responder responder = new SpecificResponder(AvroSourceProtocol.class, new CustomEventGenClientTester());
+			Responder responder = new SpecificResponder(AvroSourceProtocol.class, new TestRandomEventGenClient());
 			server = new NettyServer(responder, new InetSocketAddress(NetConstants.hostName, NetConstants.portNumber));
 			server.start();
 
-			CustomEventGenClient eventGenClient = new CustomEventGenClient(NetConstants.hostName,NetConstants.portNumber);
+			RandomEventGenClient eventGenClient = new RandomEventGenClient(NetConstants.hostName,NetConstants.portNumber);
 			Event newEvent = eventGenClient.createEvent();
 			eventGenClient.postEvent(newEvent);
-			System.out.println("Posted the following event");
+			System.out.println("Posted event");
 			ConsoleWriter.printEvent(newEvent);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}finally{
